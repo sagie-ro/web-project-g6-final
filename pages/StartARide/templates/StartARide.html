@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="../../../static/CSS/header.css">
+   <link  rel="stylesheet" href="../../Contacts/static/Contact.css">
+    <link href="<link rel="preconnect href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewStartARide</title>
+</head>
+<body>
+<div class="nav">
+  <div class="logo">Rabbit</div>
+  <div class="links">
+    <a href="../../HomePage/templates/HomePage.html" >Home</a>
+    <a href="../../SignIn/templates/SignIn.html">Sing Up/ Log IN</a>
+    <a href="../../UserProfile/templates/UserProfile.html">My Profile</a>
+    <a href="../../AboutUs/templates/aboutus.html">About</a>
+    <a href="../../Contacts/templates/Contact.html">Contact</a>
+  </div>
+  <div class="ham-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<div class="container">
+		<div class="contact-box">
+			<div class="left">
+            <img src="../../../static/media/Rabbit.jpeg" alt="Rabbit's logo" width=90% >
+            </div>
+			<div class="right">
+				<h2>Fill In The Details For The Ride</h2>
+                <form>
+                 <input type="datetime-local" id="datetime" name="datetime"  class="field" required>
+				 <input type="text" id="origin" name="origin" class="field"  placeholder="Your Origin" required>
+                  <input type="text" id="destination" name="destination" class="field"  placeholder="Your Destination" required>
+                    <input type="number" id="price" name="price" class="field"  placeholder="Price" min="0" required>
+                    <input type="number" id="seats" name="seats" class="field"  placeholder="Number Of Seats" min="0" required >
+                     <label for="animals">Animals:</label>
+                    <input type="checkbox" id="animals" name="animals" class="field">
+                     <label for="masks">Masks</label>
+                    <input type="checkbox" id="masks" name="masks"  class="field">
+                     <label for="smoke">Smoking</label>
+                    <input type="checkbox" id="smoke" name="smoke" class="field">
+                    <textarea placeholder="Message" class="field"></textarea>
+				<button class="btn" type="submit">Upload</button>
+                </form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script>
+    document.querySelector(".nav .ham-btn").addEventListener("click",function(){
+  document.querySelector(".nav").classList.toggle("active");
+
+});
+let el = document.getElementById('rank');
+el.onclick=show;
+    function show(){
+                        document.getElementById("choose").style.visibility="visible";
+                        document.getElementById("choose").style.transition="0.3s ease";
+                        document.getElementById("rank").style.visibility="hidden";
+                    }
+</script>
+
+</html>

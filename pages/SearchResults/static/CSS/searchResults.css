@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #242f3f;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
+}
+
+
+
+
+.grid-container{
+    top: 10px;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form{
+    top: 30px;
+    font-family: 'Montserrat';
+    margin-left: 5px;
+    float: left;
+    width: 40%;
+    border: black 1px solid;
+    display: inline-block;
+    font-size: 20px;
+}
+.form h1{
+ margin-left: 10px;
+}
+.form2 h1{
+ margin-left: 10px;
+}
+.form2{
+    margin-top: 10px;
+    font-family: 'Montserrat';
+margin-left: 5px;
+    float: right;
+    width: 40%;
+    border: black 1px solid;
+    display: inline-block;
+}
+.search{
+    margin-top: 8%;
+    margin-left: 70px;
+    border: #222222 solid 3px;
+    border-radius: 10px;
+    width: 77%;
+}
+.inForm{
+    position: center;
+     margin-top: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+}
+.up{
+  margin-bottom: 5px;
+}
+.submit{
+    font-family: 'Montserrat';
+    margin-top: 5px;
+    margin-bottom: 5px;
+     margin-left: 15px;
+     font-size: 15px;
+}
+
+.form .inForm .send-btn{
+    float: right;
+    background: lightgray;
+    border: none;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-property: background;
+}
+.form .inForm .submit:hover {
+    background: black;
+    color: azure;
+}
+
+.element{
+    position: center;
+    padding-top: 5px ;
+    margin-left: 40px;
+    display: inline ;
+    border-radius: 10px;
+    background: lightblue ;
+    width: 90%;
+    margin-top: 3px;
+     margin-bottom: 5px;
+}
+
+.btn{
+    margin: 10px;
+	width: 100%;
+	padding: 0.5rem 1rem;
+	background-color: teal;
+	color: #fff;
+	font-size: 1.1rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+}
+.btn:hover{
+    background-color: black;
+}
+
+.inner_element{
+    border-radius: 10px;
+    padding: 0.5em;
+    font-family: 'Montserrat';
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 3%;
+
+    width: 8em;
+    display: inline-block;
+    font-size: 15px;
+    border: black 1px solid;
+}
+
+.inner_element2{
+    border-radius: 10px;
+    padding: 0.5em;
+    font-family: 'Montserrat';
+    margin-top: 3%;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    height: auto;
+    width: auto;
+    display: inline-block;
+    font-size: 15px;
+    border: black 1px solid;
+}
+.inner_element2 img{
+    width:25px;
+    height:25px;
+}
+@media screen and (max-width: 738px) {
+   .logo_container h1{
+    color: teal;
+    height: 80%;
+    vertical-align: middle;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    display: table-cell;
+}
+    .navigation a li{
+    display: table-cell;
+    vertical-align: middle;
+    height : 100%;
+    color: teal;
+    font-family: 'Montserrat';
+    font-size: 10px;
+}
+}
+
+
+@media only screen and (max-width: 769px) {
+    .search {
+        margin-top: 20%;
+        margin-left: 70px;
+        border: #222222 solid 3px;
+        border-radius: 10px;
+        width: 77%;
+    }
+}

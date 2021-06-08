@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../../../static/CSS/header.css">
+    <Link rel="stylesheet" href="../static/CSS/UserProfile.css">
+    <link href="<link rel="preconnect href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Font Awesome -->
+</head>
+<body >
+
+<script>
+
+alert("Don't forget to rate your last travel partners!" );
+
+</script>
+
+<div class="nav">
+  <div class="logo">Rabbit</div>
+  <div class="links">
+    <a href="../../HomePage/templates/HomePage.html">Home</a>
+    <a href="../../SignIn/templates/SignIn.html">Sing Up/ Log IN</a>
+    <a href="UserProfile.html" class="active">My Profile</a>
+    <a href="../../AboutUs/templates/aboutus.html">About</a>
+    <a href="../../Contacts/templates/Contact.html">Contact</a>
+  </div>
+  <div class="ham-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<div class="wrapper">
+
+    <div class="left">
+        <img src="../../UserProfile/static/media/Israel.png" alt="user's profile picture" width="120">
+        <h4>Israel Aharoni</h4>
+    </div>
+    <div class="right">
+        <div class="info">
+            <h3>Information</h3>
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Email</h4>
+                    <p>Israel@Aharoni.com</p>
+                 </div>
+                 <div class="data">
+                   <h4>Phone</h4>
+                    <p>052-123456</p>
+              </div>
+            </div>
+        </div>
+      <div class="My Rides">
+            <h3>My Rides</h3>
+            <div class="projects_data">
+                 <div class="data">
+                    <h4>My car</h4>
+                    <p>Silver Mazda 6<br> Car NUmber: 666-6666-666<br> Lisence Number: 22222222</p>
+                 </div>
+                 <div class="data">
+                   <h4>Number of rides</h4>
+                    <p>6 rides</p>
+              </div>
+                <div class="data">
+                    <h4>My Driver Rating</h4>
+                    <p>4.6 Stars</p>
+                    <h4>My passenger Rating</h4>
+                    <p>4.2 Stars</p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="social_media">
+            <ul>
+              <li><a href=https://www.facebook.com/%D7%90%D7%94%D7%A8%D7%95%D7%A0%D7%99-%D7%9E%D7%91%D7%A9%D7%9C-349295671822146><i class="fab fa-facebook-f"></i></a></li>
+          </ul>
+
+      <div class="Rank" id="rank">
+            <ul>
+                <li><a href="#" onclick="show()" >Rank</a></li>
+            </ul>
+      </div>
+            <div class="choose" id="choose" style="visibility: hidden">
+                <ul>
+                    <li><a href="../../RankPassenger/templates/RankPassenger.html">As Passenger</a></li>
+                    <li><a href="../../RankDriver/templates/RankDriver.html">As Driver</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style> #choose{
+    opacity:100%;
+} </style>
+</body>
+<script>
+    document.querySelector(".nav .ham-btn").addEventListener("click",function(){
+  document.querySelector(".nav").classList.toggle("active");
+
+});
+let el = document.getElementById('rank');
+el.onclick=show;
+    function show(){
+                        document.getElementById("choose").style.visibility="visible";
+                        document.getElementById("choose").style.transition="0.3s ease";
+                        document.getElementById("rank").style.visibility="hidden";
+                    }
+</script>
+
+</html>

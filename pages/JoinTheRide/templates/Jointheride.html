@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Join a ride</title>
+    <link rel="stylesheet" href="../../../static/CSS/header.css">
+    <Link rel="stylesheet" href="../../Contacts/static/Contact.css">
+    <link href="<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!------------------------------->
+<div class="nav">
+  <div class="logo">Rabbit</div>
+  <div class="links">
+    <a href="../../HomePage/templates/HomePage.html" >Home</a>
+    <a href="../../SignIn/templates/SignIn.html">Sing Up/ Log IN</a>
+    <a href="../../UserProfile/templates/UserProfile.html">My Profile</a>
+    <a href="../../AboutUs/templates/aboutus.html">About</a>
+    <a href="../../Contacts/templates/Contact.html">Contact</a>
+  </div>
+  <div class="ham-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<!------------------------------->
+
+<!----Join section starts--->
+
+
+	<div class="container">
+		<div class="contact-box">
+			<div class="left">
+            <img src="../../../static/media/Rabbit.jpeg" alt="Rabbit's logo" width=90% >
+            </div>
+			<div class="right">
+				<h2>Join The Ride</h2>
+                <form>
+				<input type="text"  id=pickUpSpot name="pickUpSpot " class="field" placeholder="Your Exact Pick Up Spot" required>
+				<input type="text" id="GetOffSpot" name="GetOffSpot" class="field" placeholder="Your Exact Get Off Spot" required >
+				<textarea placeholder="Message" class="field"></textarea>
+				<button class="btn" type="Send To Driver">Send</button>
+                </form>
+			</div>
+		</div>
+	</div>
+
+
+
+<!---Join section ends--->
+</body>
+
+<script>
+    document.querySelector(".nav .ham-btn").addEventListener("click",function(){
+  document.querySelector(".nav").classList.toggle("active");
+
+});
+let el = document.getElementById('rank');
+el.onclick=show;
+    function show(){
+                        document.getElementById("choose").style.visibility="visible";
+                        document.getElementById("choose").style.transition="0.3s ease";
+                        document.getElementById("rank").style.visibility="hidden";
+                    }
+</script>
+
+</html>
