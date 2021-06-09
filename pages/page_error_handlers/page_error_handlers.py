@@ -3,7 +3,10 @@ from app import app
 
 
 # page_error_handlers blueprint definition
-page_error_handlers = Blueprint('page_error_handlers', __name__, static_folder='static', static_url_path='/page_error_handlers', template_folder='templates')
+page_error_handlers = Blueprint('page_error_handlers', __name__,
+                                static_folder='static',
+                                static_url_path='/page_error_handlers',
+                                template_folder='templates')
 
 
 # Error handlers
