@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../../../static/CSS/header.css">
-    <link rel = "stylesheet" href="../../homepage/static/homepage.css">
+    <link rel = "stylesheet" href={{ url_for('homepage.static', filename='css/homepage.css') }} }}>
     <link rel="stylesheet" href="loading.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
   <div class="logo">Rabbit</div>
   <div class="links">
     <a href="homepage.html" class="active">Home</a>
-    <a href="../../SignIn/templates/SignIn.html">Sing Up/ Log IN</a>
+    <a href="/UserProfile">Sing Up/ Log IN</a>
     <a href="../../UserProfile/templates/UserProfile.html">My Profile</a>
     <a href="../../AboutUs/templates/aboutus.html">About</a>
     <a href="../../Contacts/templates/Contact.html">Contact</a>

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for
 
 # homepage blueprint definition
-homepage = Blueprint('homepage', __name__,
+homepage = Blueprint('homepage', __name__,   
                      static_folder='static',
                      static_url_path='/homepage',
                      template_folder='templates')
