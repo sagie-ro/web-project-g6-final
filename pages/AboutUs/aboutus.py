@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, session
 
-# homepage blueprint definition
 aboutus = Blueprint('aboutus', __name__,
                     static_folder='static',
                     static_url_path='/aboutus',
@@ -10,5 +9,8 @@ aboutus = Blueprint('aboutus', __name__,
 # Routes
 @aboutus.route('/aboutus')
 def index():
-    return render_template('aboutus.html')
+    current_user = None
+    if "user" in session:
+        current_user= session["user"]
+    return render_template('aboutus.html', current_user=current_user)
 

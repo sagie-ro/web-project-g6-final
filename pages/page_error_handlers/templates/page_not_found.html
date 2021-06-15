@@ -3,6 +3,7 @@
 {% set page_head_title = 'Page not found' %}
 
 {% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/homepage.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('page_error_handlers.static', filename='css/page_error_handlers.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('page_error_handlers.static', filename='css/page_not_found.css') }}"/>
 {% endblock %}
@@ -14,6 +15,7 @@
 {% block page_body_main_content %}
     <h1>Page not found!</h1>
     <h2>Sorry! Requested page was not found.</h2>
+    Go Back to <a href="{{url_for('homepage.index')}}">Home Page</a>
 {% endblock %}
 
 {% block page_body_js %}

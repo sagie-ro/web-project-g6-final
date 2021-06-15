@@ -1,48 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="../../../static/CSS/header.css">
-   <link  rel="stylesheet" href="../static/signIn.css">
-    <link href="<link rel="preconnect href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">"
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In Log In</title>
-</head>
-<body>
-
-<div class="nav">
-  <div class="logo">Rabbit</div>
-  <div class="links">
-    <a href="../../HomePage/templates/HomePage.html" >Home</a>
-    <a href="SignIn.html" class="active">Sing Up/ Log IN</a>
-    <a href="../../UserProfile/templates/UserProfile.html">My Profile</a>
-    <a href="../../AboutUs/templates/aboutus.html">About</a>
-    <a href="../../Contacts/templates/Contact.html">Contact</a>
-  </div>
-  <div class="ham-btn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-
+{%extends 'base.html'%}
+{%set page_head_title='Sign In Log In'%}
+{%block page_head_css%}
+    <link rel = "stylesheet" href="{{url_for('Signin.static', filename='signIn.css')}}">
+{%endblock%}
+{%block page_body_main_content%}
 	<div class="container">
 		<div class="contact-box">
 			<div class="left">
                 <h2>Log In!</h2>
-                <form class="form">
+                <form class="form" action="{{url_for('Signin.login')}}" method="POST">
 				<input type="email" id="email" name="email" class="field" placeholder="Your Email" required >
 				<input type="password" id="password" name="password" class="field" placeholder="Your password" required >
 				<button class="btn" type="submit">Enter</button>
                 </form>
-
-
             </div>
 			<div class="right">
                 <h2>Sign Up To Rabbit!</h2>
-                <form calss="form2">
+                <form calss="form2" action="{{url_for('Signin.register')}}" method="POST" enctype="multipart/form-data">
 				<input type="text"  id=name name="name" class="field" placeholder="Your Name" required>
 				<input type="email" id="email" name="email" class="field" placeholder="Your Email" required >
+                 <input type="text" id="carModel" name="phone" class="field" placeholder="Your Phone Number" >
                  <p>Your Birthdate:</p>
 				<input type="date" id="bday" name="bday" class="field" placeholder="Your birthday" required >
                  <input type="password" id="password" name="password" class="field" placeholder="Your password" required >
@@ -50,28 +27,12 @@
                  <input type="number" id="numLicense" name="numLicense" class="field" placeholder="Your Number Of License"  >
                  <input type="number" id="numOfCar" name="numOfCar" class="field" placeholder="Your Car Number"  >
                  <input type="text" id="carCom" name="carCom" class="field" placeholder="Car Company"  >
-                 <input type="text" id="carModel" name="carModelr" class="field" placeholder="Your Car Model" >
+                 <input type="text" id="carModel" name="carModelr" class="field" placeholder="Your Car Model" required="">
+                 <input type="file" id="carModel" name="profile" class="field" placeholder="Select Profile Image" required>
 				<button class="btn" type="submit">Submit</button>
                 </form>
 
 			</div>
 		</div>
 	</div>
-
-</body>
-
-<script>
-    document.querySelector(".nav .ham-btn").addEventListener("click",function(){
-  document.querySelector(".nav").classList.toggle("active");
-
-});
-let el = document.getElementById('rank');
-el.onclick=show;
-    function show(){
-                        document.getElementById("choose").style.visibility="visible";
-                        document.getElementById("choose").style.transition="0.3s ease";
-                        document.getElementById("rank").style.visibility="hidden";
-                    }
-</script>
-
-</html>
+{%endblock%}

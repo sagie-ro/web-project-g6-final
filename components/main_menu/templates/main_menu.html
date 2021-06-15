@@ -1,20 +1,33 @@
-<link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/main-menu.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/header.css') }}"/>
 
 {%
     set menu_items = {
-        'homepage': '/',
-        'catalog': url_for('catalog.index'),
-        'about': url_for('about.index'),
+        'homepage': url_for('homepage.index'),
+        'contact':url_for('Contacts.index'),
+        'about': url_for('aboutus.index'),
+        ('Profile' if current_user) : url_for('UserProfile.index', ID=(current_user)) if current_user,
+        ('Login / Register' if not current_user else 'Logout') : url_for('Signin.index' if not current_user else 'Signin.logout')
     }
 %}
+<div class="nav">
+  <a class="logo" href="/">Rabbit</a>
+  <div class="links">
+    {% for item in menu_items %}
+    {% if item %}
+    <a
+        href="{{ menu_items[item] }}"
+        {% if menu_items[item] == request.path %}
+            class="active"
+        {% endif %}
+    >{{ item | capitalize }}</a>
+    {%endif%}
+    {% endfor %}
+  </div>
+    <div class="ham-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-{% for item in menu_items %}
-    <li>
-        <a
-            href="{{ menu_items[item] }}"
-            {% if menu_items[item] == request.path %}
-                class="active"
-            {% endif %}
-        >{{ item | capitalize }}</a>
-    </li>
-{% endfor %}
+</div>
+

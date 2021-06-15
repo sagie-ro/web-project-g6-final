@@ -1,0 +1,7 @@
+.page-main {
+    margin-top: 100px;
+    text-align: center;
+}
+.page-main *{
+    margin: 10px;
+}

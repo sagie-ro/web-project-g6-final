@@ -14,14 +14,6 @@ app.register_blueprint(homepage)
 from pages.AboutUs.aboutus import aboutus
 app.register_blueprint(aboutus)
 
-## About
-from pages.about.about import about
-app.register_blueprint(about)
-
-## Catalog
-from pages.catalog.catalog import catalog
-app.register_blueprint(catalog)
-
 ## Page error handlers
 from pages.page_error_handlers.page_error_handlers import page_error_handlers
 app.register_blueprint(page_error_handlers)
@@ -58,15 +50,21 @@ app.register_blueprint(signin)
 from pages.StartARide.StartARide import startaride
 app.register_blueprint(startaride)
 
-
 ## UserProfile
 from pages.UserProfile.UserProfile import userprofile
 app.register_blueprint(userprofile)
 
+## MyRecords
+from pages.MyRecords.MyRecords import MyRecords
+app.register_blueprint(MyRecords)
 
+## MyMessages
 
+from pages.myMessages.myMessages import myMessages
+app.register_blueprint(myMessages)
 
 ###### Components
 ## Main menu
 from components.main_menu.main_menu import main_menu
 app.register_blueprint(main_menu)
+

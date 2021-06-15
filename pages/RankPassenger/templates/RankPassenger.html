@@ -1,123 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="../../../static/CSS/header.css">
-    <link  rel="stylesheet" href="../../../static/CSS/Ranking.css">
-    <script src="../../../static/JS/header.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+{%extends 'base.html'%}
+{%set page_head_title="Rank Passenger"%}
+{% block page_head_css %}
+	<link rel="stylesheet" href="{{url_for('RankPassenger.static', filename='CSS/Ranking.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
           integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
           crossorigin="anonymous" />
-    <title>RankPassenger</title>
-</head>
-<body>
-<script>
-		var stars;
-		var stars2;
-		var stars3;
-		document.addEventListener('DOMContentLoaded', () => {
-			stars = document.querySelectorAll(".grid-rankCmf span");
-			stars2 = document.querySelectorAll(".grid-rankAT span");
-            stars3 = document.querySelectorAll(".grid-rankCom span");
-
-			stars.forEach(item => {
-				item.addEventListener('click', function () {
-					var rating = this.getAttribute("data-rating");
-					return SetRatingStar(rating, stars);
-				});
-			});
-			stars2.forEach(item => {
-                    item.addEventListener('click', function () {
-                    var rating = this.getAttribute("data-rating");
-                    return SetRatingStar(rating, stars2);
-                });
-            });
-            stars3.forEach(item => {
-                    item.addEventListener('click', function () {
-                    var rating = this.getAttribute("data-rating");
-                    return SetRatingStar(rating, stars3);
-                });
-            });
-		});
-
-		function SetRatingStar(rating, stars) {
-			var len = stars.length;
-			console.log(rating);
-
-			for (var i = 0; i < len; i++) {
-				if (i < rating) {
-					stars[i].innerHTML = '<i class="fas fa-star"></i>';
-				} else {
-					stars[i].innerHTML = '<i class="far fa-star"></i>';
-				}
-			}
-
-		};
-	</script>
-
-<div class="nav">
-  <div class="logo">Rabbit</div>
-  <div class="links">
-    <a href="../../HomePage/templates/HomePage.html" >Home</a>
-    <a href="../../SignIn/templates/SignIn.html">Sing Up/ Log IN</a>
-    <a href="../../UserProfile/templates/UserProfile.html">My Profile</a>
-    <a href="../../AboutUs/templates/aboutus.html">About</a>
-    <a href="../../Contacts/templates/Contact.html">Contact</a>
-  </div>
-  <div class="ham-btn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-
+{% endblock %}
+{%block page_body_main_content%}
 <div class="container">
 		<div class="contact-box">
 			<div class="left">
-            <img src="../../../static/media/Rabbit.jpeg" alt="Rabbit's logo" width=90% >
+            <img src="{{url_for('static', filename='media/Rabbit.jpeg')}}" alt="Rabbit's logo" width=90% >
             </div>
 			<div class="right">
 
 <h2>Rank Your Passenger!</h2>
-<div class="grid-container">
-    <div class="grid-rankCmf">Driving comfort:
-            <span data-rating="1"><i class="far fa-star"></i></span>
-			<span data-rating="2"><i class="far fa-star"></i></span>
-			<span data-rating="3"><i class="far fa-star"></i></span>
-			<span data-rating="4"><i class="far fa-star"></i></span>
-			<span data-rating="5"><i class="far fa-star"></i></span>
+<form class="grid-container" method="POST">
+    <div class="grid-rankCmf" align="left"  style="margin:10px 0px">Driving comfort:
+    	<div style="float:right">
+            <span onclick="rate(1,1)" data-rating="1"><i class="far fa-star"></i></span>
+			<span onclick="rate(1,2)" data-rating="2"><i class="far fa-star"></i></span>
+			<span onclick="rate(1,3)" data-rating="3"><i class="far fa-star"></i></span>
+			<span onclick="rate(1,4)" data-rating="4"><i class="far fa-star"></i></span>
+			<span onclick="rate(1,5)" data-rating="5"><i class="far fa-star"></i></span>
+		</div>
     </div>
-    <div class="grid-rankAT">Arrival on time:
-            <span data-rating="1"><i class="far fa-star"></i></span>
-			<span data-rating="2"><i class="far fa-star"></i></span>
-			<span data-rating="3"><i class="far fa-star"></i></span>
-			<span data-rating="4"><i class="far fa-star"></i></span>
-			<span data-rating="5"><i class="far fa-star"></i></span>
+    <div class="grid-rankAT" align="left"  style="margin:10px 0px">Arrival on time:
+    	<div style="float:right">
+            <span onclick="rate(2,1)" data-rating="1"><i class="far fa-star"></i></span>
+			<span onclick="rate(2,2)" data-rating="2"><i class="far fa-star"></i></span>
+			<span onclick="rate(2,3)" data-rating="3"><i class="far fa-star"></i></span>
+			<span onclick="rate(2,4)" data-rating="4"><i class="far fa-star"></i></span>
+			<span onclick="rate(2,5)" data-rating="5"><i class="far fa-star"></i></span>
+		</div>
     </div>
-    <div class="grid-rankCom">Company:
-            <span data-rating="1"><i class="far fa-star"></i></span>
-			<span data-rating="2"><i class="far fa-star"></i></span>
-			<span data-rating="3"><i class="far fa-star"></i></span>
-			<span data-rating="4"><i class="far fa-star"></i></span>
-			<span data-rating="5"><i class="far fa-star"></i></span>
+    <div class="grid-rankCom" align="left"  style="margin:10px 0px">Company:
+    	<div style="float:right">
+            <span onclick="rate(3,1)" data-rating="1"><i class="far fa-star"></i></span>
+			<span onclick="rate(3,2)" data-rating="2"><i class="far fa-star"></i></span>
+			<span onclick="rate(3,3)" data-rating="3"><i class="far fa-star"></i></span>
+			<span onclick="rate(3,4)" data-rating="4"><i class="far fa-star"></i></span>
+			<span onclick="rate(3,5)" data-rating="5"><i class="far fa-star"></i></span>
+		</div>
     </div>
-    <div class="grid-ranktxt">
+    <div class="grid-ranktxt" style="margin:10px 0px">
         <label for="commentD">Comment:</label><br>
-        <textarea placeholder="Your Comment" ></textarea>
+        <textarea placeholder="Your Comment" name="message"></textarea>
         <br>
-
+        <input type="hidden" name="rate" value="1" hidden>
     </div>
     <div class="grid-sub">
         <button class="btn" type="submit">Upload</button>
     </div>
-</div>
+</form>
 			</div>
 		</div>
 	</div>
-
-
-</body>
-</html>
+{%endblock%}
+{%block page_body_js%}
+<script type="text/javascript" src="{{url_for('RankDriver.static',filename='js/Ranking.js')}}"></script>
+<script type="text/javascript">
+	var rates = [1,1,1];
+	function rate(ID, val) {
+		rates[ID-1] = val;
+		$('input[name="rate"]').val((rates[0]+rates[1]+rates[2])/3);
+	}
+</script>
+{%endblock%}

@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{%set page_head_title='My Messages'%}
+{%block page_head_css%}
+    <link rel = "stylesheet" href="{{url_for('homepage.static', filename='css/homepage.css')}}">
+    <link rel = "stylesheet" href="{{url_for('MyRecords.static', filename='css/myrecords.css')}}">
+{%endblock%}
+{%block page_body_main_content%}
+<div class="container">
+	<table>
+		<thead>
+			<tr>
+				<th>Message ID</th>
+				<th>Content</th>
+				<th></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{%for Message in messageList%}
+			<tr>
+				<td>{{Message['ID']}}</td>
+				<td>{{Message['Message']}}</td>
+				<td><a href="{{url_for('myMessages.delete', ID=Message['ID'])}}">Delete message</a></td>
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+{%endblock%}

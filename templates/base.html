@@ -31,14 +31,15 @@ Base page blocks:
     <head>
     {% block page_head %}
         {# Title #}
-        <title>{{ page_head_title_author|default('Barak Pinchovski', true) }} | {{ page_head_title|default('Flask skeleton project', true) }}</title>
+        <title>{{ page_head_title_author|default('Group6', true) }} | {{ page_head_title|default('web-project-g6', true) }}</title>
 
         {# Meta tags #}
         {% block page_head_meta %}
             <base href="/"/>
             <meta charset="UTF-8"/>
-            <meta name="author" content="Barak Pinchovski"/>
+            <meta name="author" content="Group6"/>
             <meta name="description" content="Flask skeleton project as a base to start developing on"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="keywords" content="flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education"/>
             {% block page_head_meta_extra %}{% endblock %}
         {% endblock %}
@@ -50,13 +51,17 @@ Base page blocks:
         <base href="/"/>
 
         {# CSS #}
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}"/>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/loading.css')}}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
         {% block page_head_css %}{% endblock %}
     {% endblock %}
     </head>
     <body>
         {% block page_body_content %}
-
+           <div class="loader-wrapper">
+              <span class="loader"><span class="loader-inner"></span></span>
+            </div>
             {# Header #}
             {% block page_body_header %}
                 <header class="page-header">
@@ -98,7 +103,25 @@ Base page blocks:
         {% endblock %}
 
         {# JS #}
+        <script src="{{url_for('static', filename='js/jq.js')}}"></script>
         <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+        <script>
+            $(window).on("load",function(){
+              $(".loader-wrapper").fadeOut("slow");
+            });
+        </script>
+        <script>
+            document.querySelector(".nav .ham-btn").addEventListener("click",function(){
+                document.querySelector(".nav").classList.toggle("active");
+            });
+            let el = document.getElementById('rank');
+            el.onclick=show;
+            function show(){
+                document.getElementById("choose").style.visibility="visible";
+                document.getElementById("choose").style.transition="0.3s ease";
+                document.getElementById("rank").style.visibility="hidden";
+            }
+        </script>
         {% block page_body_js %}{% endblock %}
     </body>
 </html>

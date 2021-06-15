@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, session
 
 # homepage blueprint definition
 homepage = Blueprint('homepage', __name__,   
@@ -10,7 +10,10 @@ homepage = Blueprint('homepage', __name__,
 # Routes
 @homepage.route('/')
 def index():
-    return render_template('homepage.html')
+    user = None
+    if "user" in session:
+        user = session["user"]
+    return render_template('homepage.html', current_user = user)
 
 
 @homepage.route('/homepage')

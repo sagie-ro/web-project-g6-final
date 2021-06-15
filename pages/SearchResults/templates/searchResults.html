@@ -1,316 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../../static/CSS/header.css">
-    <link rel = "stylesheet" href="../static/CSS/searchResults.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available rides</title>
-     <script src="../../../static/JS/jq.js"></script>
-</head>
-<body>
-  <div class="loader-wrapper">
-      <span class="loader"><span class="loader-inner"></span></span>
-    </div>
-    <script>
-        $(window).on("load",function(){
-          $(".loader-wrapper").fadeOut("slow");
-        });
-    </script>
-
-
-
-<div class="nav">
-    <div class="logo">Rabbit</div>
-    <div class="links">
-    <a href="../../HomePage/templates/HomePage.html" >Home</a>
-    <a href="../../SignIn/templates/SignIn.html">Sing Up/ Log IN</a>
-    <a href="../../UserProfile/templates/UserProfile.html">My Profile</a>
-    <a href="../../AboutUs/templates/aboutus.html">About</a>
-    <a href="../../Contacts/templates/Contact.html">Contact</a>
-    </div>
-    <div class="ham-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
-
-<div class="search">
+{%extends 'base.html'%}
+{%set page_head_title='Available rides'%}
+{%block page_head_css%}
+    <link rel = "stylesheet" href="{{url_for('SearchResults.static', filename='css/searchResults.css')}}">
+{%endblock%}
+{%block page_body_main_content%}
+<form class="search" method="POST">
     <div class="inForm">
         <label for ="start" >Current location:</label>
-        <input type="text" id = "start">
+        <input type="text" id = "start" name="origin">
         <label for ="end">Destination</label>
-        <input type="text" id = "end" class="up">
-        <input type="datetime-local" id="Time">
+        <input type="text" id = "end" class="up" name="destination">
+        <input type="datetime-local" id="Time" name="datetime">
         <br>
-        <label>preferences:</label><br>
-        <input type="checkbox">smoking? </input>
-        <input type="checkbox">pets allowed? </input>
-        <input type="checkbox">masks? </input>
+        <label>preferences: </label>
+        <input type="checkbox" name="smoke" value="smoke"> smoking? </input>
+        <input type="checkbox" name="animals" value="animals"> pets allowed? </input>
+        <input type="checkbox" name="masks" value="masks"> masks? </input>
+        <br>
         <input type="submit" value="Search" class="submit">
     </div>
-</div>
+</form>
 
 <div class="grid-container">
-
+        {%for ride in rides%}
+        {%if current_user!=ride['DriverID']%}
         <ul class="element">
             <li class="inner_element">
                 <label for="Driver">Driver:</label><br>
-                <a id="Driver" href=getDriver()>Maya Zaken</a>
+                <a id="Driver" href="{{url_for('UserProfile.index', ID=ride['DriverID'])}}">{{ride['DriverName']}}</a>
             </li>
             <li class="inner_element">
                 <label for="startTime">Start time</label><br>
-                <p id="startTime" >16:45 </p>
+                <p id="startTime" >{{ride['DepartureTime']}}</p>
             </li>
             <span class="inner_element">
-                <label for="currentLocation">Current location</label><br>
-                <a id="currentLocation" >Jerusalem </a>
+                <label for="currentLocation">Origin</label><br>
+                <a id="currentLocation" >{{ride['Origin']}}</a>
             </span>
             <span class="inner_element">
-                <label for="destinationLocation">Current location</label><br>
-                <a id="destinationLocation" >Beer-Sheva</a>
+                <label for="destinationLocation">Destination</label><br>
+                <a id="destinationLocation" >{{ride['Destination']}}</a>
             </span>
             <span class="inner_element">
                 <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >1 </a>
+                <a id="numOfSeats" >{{ride['Seats']}}</a>
             </span>
             <span class="inner_element">
                 <label for="Payment">Payment</label><br>
-                <a id="Payment">20 NIS </a>
+                <a id="Payment">{{ride['Price']}} NIS </a>
             </span>
             <span class="inner_element2">
                 <label>preferences</label><br>
-                <img src="../static/media/cigarette.jpg">
-                <img src="../static/media/pet.jpg">
-                <img src="../static/media/mask.png">
+                {%if ride['Smoking']%}
+                <img src="{{url_for('SearchResults.static',filename='media/cigarette.jpg')}}">
+                {%endif%}
+                {%if ride['Pets']%}
+                <img src="{{url_for('SearchResults.static',filename='media/pet.jpg')}}">
+                {%endif%}
+                {%if ride['Mask']%}
+                <img src="{{url_for('SearchResults.static',filename='media/mask.png')}}">
+                {%endif%}
             </span>
-
-            <a class="btn" href="../../JoinTheRide/templates/Jointheride.html"  >Join ride!</a>
-
+            <a class="btn" href="{{url_for('JoinTheRide.index', ID=ride['ID'])}}"  >Join ride!</a>
         </ul>
-
-        <ul class="element">
-            <li class="inner_element">
-                <label for="Driver">Driver:</label><br>
-                <a id="Driver" href=getDriver()>Dor Hen </a>
-            </li>
-            <li class="inner_element">
-                <label for="startTime">Start time</label><br>
-                <p id="startTime" >10:00 </p>
-            </li>
-            <span class="inner_element">
-                <label for="currentLocation">Current location</label><br>
-                <a id="currentLocation" >Beer-Sheva </a>
-            </span>
-            <span class="inner_element">
-                <label for="destinationLocation">Current location</label><br>
-                <a id="destinationLocation" >Tel-Aviv</a>
-            </span>
-            <span class="inner_element">
-                <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >2 </a>
-            </span>
-            <span class="inner_element">
-                <label for="Payment">Payment</label><br>
-                <a id="Payment">Free </a>
-            </span>
-            <span class="inner_element2">
-                <label>preferences</label><br>
-                <img src="../static/media/cigarette.jpg">
-                <img src="../static/media/pet.jpg">
-            </span>
-            <a class="btn" href="../../JoinTheRide/templates/Jointheride.html"  >Join ride!</a>
-        </ul>
-
-        <ul class="element">
-            <li class="inner_element">
-                <label for="Driver">Driver:</label><br>
-                <a id="Driver" href=getDriver()>Roni mendelson </a>
-            </li>
-            <li class="inner_element">
-                <label for="startTime">Start time</label><br>
-                <p id="startTime" >12:10 </p>
-            </li>
-            <span class="inner_element">
-                <label for="currentLocation">Current location</label><br>
-                <a id="currentLocation" >Modi'in </a>
-            </span>
-            <span class="inner_element">
-                <label for="destinationLocation">Current location</label><br>
-                <a id="destinationLocation" >Beer-Sheva</a>
-            </span>
-            <span class="inner_element2">
-                <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >4 </a>
-            </span>
-            <span class="inner_element">
-                <label for="Payment">Payment</label><br>
-                <a id="Payment">20 NIS </a>
-            </span>
-                  <span class="inner_element2">
-                <label>preferences</label><br>
-                <img src="../static/media/pet.jpg">
-
-        </span>
-            <a class="btn" href="../../JoinTheRide/templates/Jointheride.html"  >Join ride!</a>
-        </ul>
-
-        <ul class="element">
-            <li class="inner_element">
-                <label for="Driver">Driver:</label><br>
-                <a id="Driver" href=getDriver()>Sagie Rootshtain</a>
-            </li>
-            <li class="inner_element">
-                <label for="startTime">Start time</label><br>
-                <p id="startTime" >14:30 </p>
-            </li>
-            <span class="inner_element">
-                <label for="currentLocation">Current location</label><br>
-                <a id="currentLocation" >Giva'taim </a>
-            </span>
-            <span class="inner_element">
-                <label for="destinationLocation">Current location</label><br>
-                <a id="destinationLocation" >Beer-Sheva</a>
-            </span>
-            <span class="inner_element">
-                <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >1 </a>
-            </span>
-            <span class="inner_element">
-                <label for="Payment">Payment</label><br>
-                <a id="Payment">25 NIS </a>
-            </span>
-            <span class="inner_element2">
-                  <label>preferences</label><br>
-                <img src="../static/media/pet.jpg">
-                <img src="../static/media/mask.png">
-
-        </span>
-            <a class="btn" href="../../JoinTheRide/templates/Jointheride.html"  >Join ride!</a>
-        </ul>
-
-        <ul class="element">
-            <li class="inner_element">
-                <label for="Driver">Driver:</label><br>
-                <a id="Driver" href=getDriver()>Sagie Rootshtain</a>
-            </li>
-            <li class="inner_element">
-                <label for="startTime">Start time</label><br>
-                <p id="startTime" >14:30 </p>
-            </li>
-            <span class="inner_element">
-                <label for="currentLocation">Current location</label><br>
-                <a id="currentLocation" >Giva'taim </a>
-            </span>
-            <span class="inner_element">
-                <label for="destinationLocation">Current location</label><br>
-                <a id="destinationLocation" >Beer-Sheva</a>
-            </span>
-            <span class="inner_element">
-                <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >1 </a>
-            </span>
-            <span class="inner_element">
-                <label for="Payment">Payment</label><br>
-                <a id="Payment">25 NIS </a>
-            </span>
-            <span class="inner_element2">
-                         <label>preferences</label><br>
-                <img src="../static/media/cigarette.jpg">
-                <img src="../static/media/mask.png">
-
-        </span>
-            <a class="btn" href="../../JoinTheRide/templates/Jointheride.html"  >Join ride!</a>
-        </ul>
-
-        <ul class="element">
-            <li class="inner_element">
-                <label for="Driver">Driver:</label><br>
-                <a id="Driver" href=getDriver()>Sagie Rootshtain</a>
-            </li>
-            <li class="inner_element">
-                <label for="startTime">Start time</label><br>
-                <p id="startTime" >14:30 </p>
-            </li>
-            <span class="inner_element">
-                <label for="currentLocation">Current location</label><br>
-                <a id="currentLocation" >Giva'taim </a>
-            </span>
-            <span class="inner_element">
-                <label for="destinationLocation">Current location</label><br>
-                <a id="destinationLocation" >Beer-Sheva</a>
-            </span>
-            <span class="inner_element">
-                <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >1 </a>
-            </span>
-            <span class="inner_element">
-                <label for="Payment">Payment</label><br>
-                <a id="Payment">25 NIS</a>
-            </span>
-            <span class="inner_element2">
-                <label>preferences</label><br>
-                <img src="../static/media/cigarette.jpg">
-                <img src="../static/media/pet.jpg">
-
-        </span>
-            <a class="btn" href="../../JoinTheRide/templates/Jointheride.html"  >Join ride!</a>
-        </ul>
-
-        <ul class="element">
-            <li class="inner_element">
-                <label for="Driver">Driver:</label><br>
-                <a id="Driver" href=getDriver()>Sagie Rootshtain</a>
-            </li>
-            <li class="inner_element">
-                <label for="startTime">Start time</label><br>
-                <p id="startTime" >14:30 </p>
-            </li>
-            <span class="inner_element">
-                <label for="currentLocation">Current location</label><br>
-                <a id="currentLocation" >Giva'taim </a>
-            </span>
-            <span class="inner_element">
-                <label for="destinationLocation">Current location</label><br>
-                <a id="destinationLocation" >Beer-Sheva</a>
-            </span>
-            <span class="inner_element">
-                <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >1 </a>
-            </span>
-            <span class="inner_element">
-                <label for="Payment">Payment</label><br>
-                <a id="Payment">25 NIS</a>
-            </span>
-            <span class="inner_element2">
-                <label>preferences</label><br>
-                <img src="../static/media/cigarette.jpg">
-                <img src="../static/media/pet.jpg">
-                <img src="../static/media/mask.png">
-
-        </span>
-            <a class="btn" href="../../JoinTheRide/templates/Jointheride.html"  >Join ride!</a>
-        </ul>
-
-
-
+        {%endif%}
+        {%endfor%}
 </div>
-
-</body>
-<script>
-    document.querySelector(".nav .ham-btn").addEventListener("click",function(){
-  document.querySelector(".nav").classList.toggle("active");
-
-});
-let el = document.getElementById('rank');
-el.onclick=show;
-    function show(){
-                        document.getElementById("choose").style.visibility="visible";
-                        document.getElementById("choose").style.transition="0.3s ease";
-                        document.getElementById("rank").style.visibility="hidden";
-                    }
-</script>
-
-</html>
+{%endblock%}
