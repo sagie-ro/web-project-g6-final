@@ -1,4 +1,5 @@
 
+
 *{
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
@@ -18,7 +19,10 @@
 	align-items: center;
 	padding: 20px 100px;
 }
-
+.grid-container{
+    font-size: 20px;
+    padding: 20px;
+}
 .container:after{
 	content: '';
 	position: absolute;
@@ -48,15 +52,10 @@
 	background: url("img/bg.jpg") no-repeat center;
 	background-size: cover;
 	height: 100%;
-    padding: 25px 40px;
 }
 
 .right{
-	margin-top: 70px;
-	background: url("img/bg.jpg") no-repeat center;
-	background-size: cover;
-	height: 100%;
-    padding: 25px 40px;
+	padding: 25px 40px;
 }
 
 h2{
@@ -77,24 +76,6 @@ h2:after{
     background-color: teal;
 }
 
-.field{
-	width: 100%;
-	border: 2px solid rgba(0, 0, 0, 0);
-	outline: none;
-	background-color: rgba(230, 230, 230, 0.6);
-	padding: 0.5rem 1rem;
-	font-size: 1.1rem;
-	margin-bottom: 22px;
-	transition: .3s;
-}
-
-.field:hover{
-	background-color: rgba(0, 0, 0, 0.1);
-}
-
-textarea{
-	min-height: 150px;
-}
 
 .btn{
 	width: 100%;
@@ -107,6 +88,10 @@ textarea{
 	cursor: pointer;
 	transition: .3s;
 }
+textarea{
+	min-height: 150px;
+	width: 300px;
+}
 
 .btn:hover{
     background-color: black;
@@ -117,30 +102,35 @@ textarea{
     background-color: #fff;
 }
 
-@media screen and (max-width: 880px){
-	.contact-box{
+@media screen and (max-width: 880px) {
+	.contact-box {
 		grid-template-columns: 1fr;
 	}
-	.left{
-		height: 200px;
+
+	.left {
+		display: none;
 	}
-.container{
-    margin-top: 80px;
-}
-.left{
-    margin-top: 10px;
-	background: url("img/bg.jpg") no-repeat center;
-	background-size: cover;
-	height: 100%;
-    padding: 25px 40px;
+
+	.grid-rankCmf {
+		font-size: 18px;
+	}
+
+	.grid-rankAT {
+		font-size: 18px;
+	}
+
+	.grid-rankCom {
+		font-size: 18px;
+	}
 }
 
-.right{
-	margin-top: 20px;
-	background: url("img/bg.jpg") no-repeat center;
-	background-size: cover;
-	height: 100%;
-    padding: 25px 40px;
-}
-
+.field{
+	width: 100%;
+	border: 2px solid rgba(0, 0, 0, 0);
+	outline: none;
+	background-color: rgba(230, 230, 230, 0.6);
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	transition: .3s;
 }

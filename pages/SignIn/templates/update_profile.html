@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%set page_head_title='Update Profile'%}
+{%block page_head_css%}
+    <link rel = "stylesheet" href="{{url_for('Signin.static', filename='signIn.css')}}">
+{%endblock%}
+{%block page_body_main_content%}
+	<div class="container">
+		<div class="contact-box" style="display:block">
+			<div class="right">
+                <h2>Update Profile!</h2>
+                <form calss="form2" style="margin:auto;" action="{{url_for('Signin.updateProfile')}}" method="POST" enctype="multipart/form-data">
+				<input type="text"  id=name name="name" class="field" value="{{user['Name']}}" placeholder="Your Name" required>
+				<input type="email" id="email" name="email" value="{{user['Email']}}" class="field" placeholder="Your Email" required >
+                 <input type="text" id="carModel" name="phone" value="{{user['Phone']}}" class="field" placeholder="Your Phone Number" >
+                 <p>Your Birthdate:</p>
+				<input type="date" id="bday" name="bday" value="{{user['DOB']}}" class="field" placeholder="Your birthday" required >
+                 <input type="password" id="password" name="password" class="field" placeholder="Your password" required >
+                 <input type="url" id="facebook" name="facebook" value="{{user['FacebookLink']}}" class="field" placeholder="Link To Your Facebook">
+                 <input type="number" id="numLicense" name="numLicense" value="{{user['LicenseNumber']}}" class="field" placeholder="Your Number Of License"  >
+                 <input type="number" id="numOfCar" value="{{user['CarNumber']}}" name="numOfCar" class="field" placeholder="Your Car Number"  >
+                 <input type="text" id="carCom" value="{{user['Company']}}" name="carCom" class="field" placeholder="Car Company"  >
+                 <input type="text" id="carModel" value="{{user['CarModel']}}" name="carModel" class="field" placeholder="Your Car Model" required="">
+                 <input hidden name="profile_val" value="{{user['Profile']}}">
+                 <input type="file" id="carModel" name="profile" class="field" placeholder="Select Profile Image">
+				<button class="btn" type="submit">Submit</button>
+                </form>
+			</div>
+		</div>
+	</div>
+{%endblock%}

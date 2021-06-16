@@ -1,0 +1,21 @@
+.container{
+	margin-top: 100px;
+	padding: 0px 20px;
+}
+table{
+	width: 100%;
+	margin: 20px 0px;
+}
+table, tr, td, th{
+	border: 1px solid black;
+	padding: 5px;
+	border-collapse: collapse;
+}
+thead th{
+	background: black;
+	color: white;
+	text-align: left;
+}
+tbody tr:nth-child(odd) {
+	background: lightgrey;
+}

@@ -28,6 +28,6 @@ def addRide():
     msg = request.form["message"]
     result = rideModel.AddRide(driver, date, origin, destination,price,seats, animals,mask,smoke,msg)
     if result>0:
-        return render_template("success.html", msg="Your ride is added", current_user=session["user"] if "user" in session else None)
+        return render_template("success.html", msg="Your ride has been added", current_user=session["user"] if "user" in session else None)
     else:
         return render_template("success.html", msg="Could not add ride, try again", current_user=session["user"] if "user" in session else None)

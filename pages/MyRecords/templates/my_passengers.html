@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%set page_head_title='My Passengers'%}
+{%block page_head_css%}
+    <link rel = "stylesheet" href="{{url_for('homepage.static', filename='css/homepage.css')}}">
+    <link rel = "stylesheet" href="{{url_for('MyRecords.static', filename='css/myrecords.css')}}">
+{%endblock%}
+{%block page_body_main_content%}
+<div class="container">
+	<table>
+		<thead>
+			<tr>
+				<th>Passenger Name</th>
+				<th>Origin</th>
+				<th>Destination</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{%for ride in passengers%}
+			<tr>
+				<td><a href="{{url_for('UserProfile.index', ID=ride['PassengerID'])}}">{{ride['Name']}}</a></td>
+				<td>{{ride['PickUP']}}</td>
+				<td>{{ride['DropOff']}}</td>
+				<td><a href="{{url_for('RankPassenger.index', ID=ride['PassengerID'], RideID=RideID)}}">Rate Passenger</a></td>
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+{%endblock%}

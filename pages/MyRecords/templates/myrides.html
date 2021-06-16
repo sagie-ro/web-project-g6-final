@@ -1,0 +1,60 @@
+{%extends 'base.html'%}
+{%set page_head_title='My Records'%}
+{%block page_head_css%}
+    <link rel = "stylesheet" href="{{url_for('homepage.static', filename='css/homepage.css')}}">
+    <link rel = "stylesheet" href="{{url_for('MyRecords.static', filename='css/myrecords.css')}}">
+{%endblock%}
+{%block page_body_main_content%}
+<div class="container">
+	<h1>Rides As Passenger</h1>
+	<hr>
+	<table>
+		<thead>
+			<tr>
+				<th>Driver Name</th>
+				<th>Origin</th>
+				<th>Destination</th>
+				<th>Departure Time</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{%for ride in aspassenger%}
+			<tr>
+				<td><a href="{{url_for('UserProfile.index', ID=ride['DriverID'])}}">{{ride['DriverName']}}</a></td>
+				<td>{{ride['Origin']}}</td>
+				<td>{{ride['Destination']}}</td>
+				<td>{{ride['DepartureTime']}}</td>
+				<td><a href="{{url_for('RankDriver.index', ID=ride['DriverID'], RideID=ride['ID'])}}">Rate Driver</a></td>
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+	<h1>Rides As Driver</h1>
+	<hr>
+	<table>
+		<thead>
+			<tr>
+				<th>Origin</th>
+				<th>Destination</th>
+				<th>Departure Time</th>
+				<th>Status</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			{%for ride in asdriver%}
+			<tr>
+				<td>{{ride['Origin']}}</td>
+				<td>{{ride['Destination']}}</td>
+				<td>{{ride['DepartureTime']}}</td>
+				<td>{{ride['Status']}}</td>
+				<td><a href="{{url_for('MyRecords.mark', RideID=ride['ID'])}}">Mark As End</a></td>
+				<td><a href="{{url_for('MyRecords.passengers', RideID=ride['ID'])}}">View Passengers</a></td>
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+{%endblock%}

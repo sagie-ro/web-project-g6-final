@@ -12,7 +12,7 @@ contacts = Blueprint('Contacts', __name__,
 def index():
     current_user = None
     if "user" in session:
-        current_user= session["user"]
+        current_user = session["user"]
     return render_template('Contacts.html', current_user=current_user)
 
 @contacts.route('/Contacts', methods=["POST"])
@@ -20,7 +20,10 @@ def contactPost():
     name = request.form["name"]
     message = request.form["message"]
     email = request.form["email"]
-    result = contactModel.AddContact(name, session["user"], email, message)
+    current_user = -1
+    if 'user' in session:
+        current_user = session["user"]
+    result = contactModel.AddContact(name, current_user, email, message)
     if result>0:
         return render_template("success.html", msg="THANKS FOR APPROACHING US, YOUR MESSAGE IS RECEIVED", current_user=session["user"] if "user" in session else None)
     else:

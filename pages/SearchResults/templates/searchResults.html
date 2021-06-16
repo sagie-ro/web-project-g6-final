@@ -2,6 +2,8 @@
 {%set page_head_title='Available rides'%}
 {%block page_head_css%}
     <link rel = "stylesheet" href="{{url_for('SearchResults.static', filename='css/searchResults.css')}}">
+    <link rel = "stylesheet" href="{{url_for('MyRecords.static', filename='css/myrecords.css')}}">
+
 {%endblock%}
 {%block page_body_main_content%}
 <form class="search" method="POST">
@@ -17,53 +19,49 @@
         <input type="checkbox" name="animals" value="animals"> pets allowed? </input>
         <input type="checkbox" name="masks" value="masks"> masks? </input>
         <br>
-        <input type="submit" value="Search" class="submit">
+        <input type="submit" value="Search" class="btn">
     </div>
 </form>
+<div class="container">
+	<table>
+		<thead>
+			<tr>
+				<th>Driver</th>
+				<th>Start time</th>
+                <th>Origin</th>
+				<th>Destination</th>
+                <th>Available seats</th>
+				<th>Payment</th>
+                <th>Preferences</th>
+                <th></th>
 
-<div class="grid-container">
-        {%for ride in rides%}
-        {%if current_user!=ride['DriverID']%}
-        <ul class="element">
-            <li class="inner_element">
-                <label for="Driver">Driver:</label><br>
-                <a id="Driver" href="{{url_for('UserProfile.index', ID=ride['DriverID'])}}">{{ride['DriverName']}}</a>
-            </li>
-            <li class="inner_element">
-                <label for="startTime">Start time</label><br>
-                <p id="startTime" >{{ride['DepartureTime']}}</p>
-            </li>
-            <span class="inner_element">
-                <label for="currentLocation">Origin</label><br>
-                <a id="currentLocation" >{{ride['Origin']}}</a>
-            </span>
-            <span class="inner_element">
-                <label for="destinationLocation">Destination</label><br>
-                <a id="destinationLocation" >{{ride['Destination']}}</a>
-            </span>
-            <span class="inner_element">
-                <label for="numOfSeats">seats available</label><br>
-                <a id="numOfSeats" >{{ride['Seats']}}</a>
-            </span>
-            <span class="inner_element">
-                <label for="Payment">Payment</label><br>
-                <a id="Payment">{{ride['Price']}} NIS </a>
-            </span>
-            <span class="inner_element2">
-                <label>preferences</label><br>
-                {%if ride['Smoking']%}
-                <img src="{{url_for('SearchResults.static',filename='media/cigarette.jpg')}}">
-                {%endif%}
-                {%if ride['Pets']%}
-                <img src="{{url_for('SearchResults.static',filename='media/pet.jpg')}}">
-                {%endif%}
-                {%if ride['Mask']%}
-                <img src="{{url_for('SearchResults.static',filename='media/mask.png')}}">
-                {%endif%}
-            </span>
-            <a class="btn" href="{{url_for('JoinTheRide.index', ID=ride['ID'])}}"  >Join ride!</a>
-        </ul>
-        {%endif%}
-        {%endfor%}
+			</tr>
+		</thead>
+		<tbody>
+			{%for ride in rides%}
+			<tr>
+				<td><a id="Driver" href="{{url_for('UserProfile.index', ID=ride['DriverID'])}}">{{ride['DriverName']}}</a></td>
+				<td>{{ride['DepartureTime']}}</td>
+                <td>{{ride['Origin']}}</td>
+                <td>{{ride['Destination']}}</td>
+                <td>{{ride['Seats']}}</td>
+                <td>{{ride['Price']}}</td>
+                <td>{%if ride['Smoking']%}
+                    <img class="icon" src="{{url_for('SearchResults.static',filename='media/cigarette.jpg')}}">
+                    {%endif%}
+                    {%if ride['Pets']%}
+                    <img class="icon" src="{{url_for('SearchResults.static',filename='media/pet.jpg')}}">
+                    {%endif%}
+                    {%if ride['Mask']%}
+                    <img class="icon" src="{{url_for('SearchResults.static',filename='media/mask.png')}}">
+                    {%endif%}
+                </td>
+                <td><a class="btn" href="{{url_for('JoinTheRide.index', ID=ride['ID'])}}"  >Join ride!</a></td>
+
+			</tr>
+			{%endfor%}
+		</tbody>
+	</table>
 </div>
+
 {%endblock%}

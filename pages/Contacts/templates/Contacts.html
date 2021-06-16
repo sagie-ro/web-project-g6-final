@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%set page_head_title="Contact"%}
+{% block page_head_css %}
+<link rel="stylesheet" href="{{url_for('Contacts.static', filename='contact.css')}}">
+{% endblock %}
+{%block page_body_main_content%}
+<div class="container">
+	<div class="contact-box">
+		<div class="left">
+        <img src="{{url_for('static', filename='media/Rabbit.jpeg')}}" alt="Rabbit's logo" width=90% >
+        </div>
+		<div class="right">
+			<h2>Contact Us</h2>
+            <form method="POST">
+			<input type="text"  id=name name="name" class="field" placeholder="Your Name" required>
+			<input type="email" id="email" name="email" class="field" placeholder="Your Email" required >
+			<textarea placeholder="Message" name="message" class="field"></textarea>
+			<button class="btn" type="submit">Send</button>
+            </form>
+		</div>
+	</div>
+</div>
+{%endblock%}

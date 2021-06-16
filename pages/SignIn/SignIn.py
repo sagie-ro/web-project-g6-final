@@ -40,7 +40,7 @@ def register():
     license = request.form["numLicense"]
     num = request.form["numOfCar"]
     comp = request.form["carCom"]
-    model = request.form["carModelr"]
+    model = request.form["carModel"]
     phone=request.form["phone"]
     profile = upload_file(request.files["profile"])
     result = userModel.Register(name, email, dob, password, fb, license, num, comp, model, phone, profile)
@@ -64,8 +64,8 @@ def updateProfile():
     license = request.form["numLicense"]
     num = request.form["numOfCar"]
     comp = request.form["carCom"]
-    model = request.form["carModelr"]
-    phone=request.form["phone"]
+    model = request.form["carModel"]
+    phone = request.form["phone"]
     profile = upload_file(request.files["profile"]) if request.files["profile"] else request.form["profile_val"]
     result = userModel.Update(session["user"], name, email, dob, password, fb, license, num, comp, model, phone, profile)
     if result > 0:
