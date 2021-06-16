@@ -74,14 +74,15 @@
 
 .wrapper .left img{
   border-radius: 10px;
-  margin-bottom: 30px;
-  width: 40vh;
+  margin-bottom: 10px;
+  width: 25vw;
+
 
 }
 
 .wrapper .left h4{
-  margin-bottom: 0px;
-    font-size: 2.5vw;
+  bottom: 20px;
+  font-size: 30px;
 }
 
 .wrapper .left p{
@@ -209,7 +210,7 @@
 
 @media screen and (max-width: 769px){
 .wrapper{
-    height: 350px;
+    height: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -218,4 +219,8 @@
   display: flex;
   box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
 }
+
+  .social_media{
+    gap: 3px;
+  }
 }
