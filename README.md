@@ -1,4 +1,4 @@
-# Flask Skeleton Project
+<!-- # Flask Skeleton Project
 
 ### Flask skeleton project as a base project for app development
 ##### [https://github.com/barakpinchovski/flask-skeleton-project](https://github.com/barakpinchovski/flask-skeleton-project)
@@ -123,4 +123,4 @@ Open the project's dir in the terminal and:
    records = db_cursor.fetchall()
    for record in records:
        print(record.id) #prints the record's ID 
-   ```
+   ``` -->
